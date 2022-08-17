@@ -1,0 +1,8 @@
+D:\Users\bpoch\Documents\GitHub\CSharp_Dsa\Dsa_CSharp\Dsa_CSharp\bin\Debug\Dsa_CSharp.exe.config
+D:\Users\bpoch\Documents\GitHub\CSharp_Dsa\Dsa_CSharp\Dsa_CSharp\bin\Debug\Dsa_CSharp.exe
+D:\Users\bpoch\Documents\GitHub\CSharp_Dsa\Dsa_CSharp\Dsa_CSharp\bin\Debug\Dsa_CSharp.pdb
+D:\Users\bpoch\Documents\GitHub\CSharp_Dsa\Dsa_CSharp\Dsa_CSharp\obj\Debug\Dsa_CSharp.csproj.AssemblyReference.cache
+D:\Users\bpoch\Documents\GitHub\CSharp_Dsa\Dsa_CSharp\Dsa_CSharp\obj\Debug\Dsa_CSharp.csproj.SuggestedBindingRedirects.cache
+D:\Users\bpoch\Documents\GitHub\CSharp_Dsa\Dsa_CSharp\Dsa_CSharp\obj\Debug\Dsa_CSharp.csproj.CoreCompileInputs.cache
+D:\Users\bpoch\Documents\GitHub\CSharp_Dsa\Dsa_CSharp\Dsa_CSharp\obj\Debug\Dsa_CSharp.exe
+D:\Users\bpoch\Documents\GitHub\CSharp_Dsa\Dsa_CSharp\Dsa_CSharp\obj\Debug\Dsa_CSharp.pdb
