@@ -19,35 +19,49 @@ namespace Dsa_CSharp
     {
         static void Main(string[] args)
         {
+            //// C# built-in sort method
+            //int[] example = new int[] { 3, 1, 6, 2, 8, 0 };
+            //Array.Sort(example);
+            //// If we use Console.WriteLine(example);, it won't print contents. To print contents,
+            //// we need to iterate over each element in the collection.
+            //foreach(int i in example)
+            //{
+            //    Console.WriteLine(i + " ");
+            //}
+
             //// C# built-in binary search algo
-            //int[] example = new int[] { 1, 3, 5, 6, 8, 11 };
-            //Console.WriteLine(Array.BinarySearch(example, 6));
+            //int[] example1 = new int[] { 1, 3, 5, 6, 8, 11 };
+            //Console.WriteLine(Array.BinarySearch(example1, 6));
 
             //List<int> ints = new List<int>() { 5, 10, 15, 20, 25, 30 };
-            //Console.WriteLine(Program.interpolationSearch(example, 6, 3));
+            //Console.WriteLine(Program.interpolationSearch(example1, 6, 3));
 
-            // Tree traversal algorithms.
-            Node leftNode = new Node()
-            {
-                data = 1,
-                left = null,
-                right = null
-            };
+            //// Tree traversal algorithms.
+            //Node leftNode = new Node()
+            //{
+            //    data = 1,
+            //    left = null,
+            //    right = null
+            //};
 
-            Node rightNode = new Node()
-            {
-                data = 3,
-                left = null,
-                right = null,
-            };
+            //Node rightNode = new Node()
+            //{
+            //    data = 3,
+            //    left = null,
+            //    right = null,
+            //};
 
-            Node root = new Node()
-            {
-                data = 2,
-                left = leftNode,
-                right = rightNode
-            };
-            PostOrder(root);
+            //Node root = new Node()
+            //{
+            //    data = 2,
+            //    left = leftNode,
+            //    right = rightNode
+            //};
+            //PostOrder(root);
+
+            // Selection sort.
+            int[] example2 = new int[] { 1, 5, -2 };
+            Console.WriteLine(selectionSort(example2));
 
             Console.ReadLine();
         }
@@ -291,5 +305,96 @@ namespace Dsa_CSharp
                 Console.WriteLine(root.data);
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        // Sorting algorithms
+
+        // Selection sort
+        static int[] selectionSort(int[] arr)
+        {
+            int len = arr.Length;
+            for(int i = 0; i < len; i++)
+            {
+                int minIndex = i;
+                for (int j = 0; j < len; j++)
+                {
+                    if (arr[j] < arr[minIndex])
+                    {
+                        minIndex = j;
+                    }
+                }
+                int temp = arr[i];
+                arr[i] = arr[minIndex];
+                arr[minIndex] = temp;
+            }
+            return arr;
+        }
+
+        // Bubble sort algorithm
+        static int[] bubbleSort(int[] arr)
+        {
+            int len = arr.Length;
+            for(int i = len - 1; i >= 0; i--)
+            {
+                for(int j = 1; j <= i; j++)
+                {
+                    if (arr[j - 1] > arr[j])
+                    {
+                        int temp = arr[j - 1];
+                        arr[j - 1] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+        // Quick sort algorithm
+        // Two functions: one to determine the partition and one to perform quick sort
+        // Function #1: determine partition
+        static int Partition(int[] arr, int left, int right)
+        {
+            int pivot = arr[left];
+            while(true)
+            {
+                while (arr[left] < pivot)
+                {
+                    left++;
+                }
+
+                while (arr[right] > pivot)
+                {
+                    right--;
+                }
+
+                if(left < right)
+                {
+                    if (arr[left] == arr[right])
+                    {
+                        return right;
+                    }
+                }
+            }
+        }
+
+        // Function #2: Quick Sort
+        static int[] quickSort(int[] arr, int left, int right)
+        {
+            if(left < right)
+            {
+                int pivot = Partition(arr, left, right);
+                if(pivot > 1)
+                {
+                    quickSort(arr, left, pivot - 1);
+                }
+                if(pivot + 1 < right)
+                {
+                    quickSort(arr, pivot + 1, right);
+                }
+            }
+            return arr;
+        }
+
+        // Merge sort algorithm
+
     }
 }
