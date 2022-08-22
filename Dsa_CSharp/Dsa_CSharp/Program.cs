@@ -395,6 +395,174 @@ namespace Dsa_CSharp
         }
 
         // Merge sort algorithm
+        public static int[] mergeSort(int[] array)
+        {
+            int[] left;
+            int[] right;
+            int[] result = new int[array.Length];
 
+            if (array.Length <= 1)
+            {
+                return array;
+            }
+
+            int midPoint = array.Length / 2;
+
+            left = new int[midPoint];
+
+            if(array.Length % 2 == 0)
+            {
+                right = new int[midPoint]; 
+            }
+            else
+            {
+                right = new int[midPoint + 1];
+            }
+
+            for (int i = 0; i < midPoint; i++)
+            {
+                left[i] = array[i];
+            }
+
+            int x = 0;
+
+            for (int i = midPoint; i < array.Length; i++)
+            {
+                right[x] = array[i];
+                x++;
+            }
+
+            left = mergeSort(left);
+            right = mergeSort(right);
+            result = merge(left, right);
+            return result;
+        }
+
+        // Our merge function
+        public static int[] merge(int[] left, int[] right)
+        {
+            int resultLength = right.Length + left.Length;
+            int[] result = new int[resultLength];
+            int indexLeft = 0, indexRight = 0, indexResult = 0;
+            while(indexLeft < left.Length || indexRight < right.Length)
+            {
+                if(indexLeft < left.Length && indexRight < right.Length)
+                {
+                    if (left[indexLeft] <= right[indexRight])
+                    {
+                        result[indexResult] = left[indexLeft];
+                        indexLeft++;
+                        indexResult++;
+                    }
+                    else
+                    {
+                        result[indexResult] = right[indexRight];
+                        indexRight++;
+                        indexResult++;
+                    }
+                }
+                else if (indexLeft < left.Length)
+                {
+                    result[indexResult] = left[indexLeft];
+                    indexLeft++;
+                    indexResult++;
+                }
+                else if(indexRight < right.Length)
+                {
+                    result[indexResult] = right[indexRight];
+                    indexRight++;
+                    indexResult++;
+                }
+            }
+            return result;
+        }
+
+        // Insertion sort algorithm.
+        static int[] insertionSort(int[] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                int value = arr[i];
+                for(int j = i - 1; j > -1 && arr[j] > value; j--)
+                {
+                    arr[j + 1] = arr[j];
+                }
+                arr[i + 1] = value;
+            }
+            return arr;
+        }
+
+        // Radix sort algorithm
+        static int[] radixSort(int[] data)
+        {
+            int[] temp = new int[data.Length];
+
+            for(int shift = 31; shift > -1; shift--)
+            {
+                int j = 0;
+
+                for (int i = 0; i < data.Length; i++)
+                {
+                    bool move = (data[i] << shift) >= 0;
+
+                    if(shift == 0 ? !move : move)
+                    {
+                        data[i - j] = data[i];
+                    } else
+                    {
+                        temp[j++] = data[i];
+                    }
+                }
+                Array.Copy(temp, 0, data, data.Length - j, j);
+            }
+            return data;
+        }
+
+        // Heap sort algorithm
+        public static int[] heapSort(int[] arr)
+        {
+            int n = arr.Length;
+            for(int i = n / 2 - 1; i >= 0; i--)
+            {
+                heapify(arr, n, i);
+            }
+
+            // The purpose of this loop is to one-by-one extract an element from the heap.
+            for(int i = n - 1; i >= 0; i--)
+            {
+                swap(arr, 0, i);
+                heapify(arr, i, 0);
+            }
+        }
+
+        static void heapify(int[] arr, int n, int i)
+        {
+            int largest = i;
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+
+            if (left < n && arr[left] > arr[largest])
+            {
+                largest = left;
+            }
+
+            if (right < n && arr[right] > arr[largest])
+            {
+                largest = right;
+            }
+
+            if(largest != i)
+            {
+                swap(arr, i, largest);
+                heapify(arr, n, largest);
+            }
+        }
+
+        static void swap(int[] arr, int element1, int element2)
+        {
+            int swap = arr[element1];
+            arr[element1] = arr[element2];
+            arr[element2] = swap;
+        }
     }
 }
